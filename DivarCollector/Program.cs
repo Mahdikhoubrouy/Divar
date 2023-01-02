@@ -26,19 +26,19 @@ if (!Directory.Exists(SessionFolder)) Directory.CreateDirectory(SessionFolder);
 var whatsection = AnsiConsole.Prompt(
     new SelectionPrompt<string>()
         .HighlightStyle(Style.Plain.Foreground(Color.Red1))
-        .Title(" Please select one of the [green]following[/]?")
+        .Title(" Please select one of the [green]options[/]?")
         .PageSize(10)
-        .MoreChoicesText("[grey](Move up and down to reveal more fruits)[/]")
-        .AddChoices(new[] { "Login", "Collect Number", "Exit" }));
+        .MoreChoicesText("[grey](Move up and down to reveal more options)[/]")
+        .AddChoices(new[] { "Add Session", "Collect Number", "Exit" }));
 
 
 if (whatsection == "Login")
 {
     AnsiConsole.WriteLine("Welcome, in this section you can create and save your session");
 
-    var number = AnsiConsole.Ask<string>("What's your [green]NumberPhone[/]?");
+    var number = AnsiConsole.Ask<string>("What's your [green]Phone Number[/]?");
 
-    if (!AnsiConsole.Confirm("PhoneNumber Is Correct?"))
+    if (!AnsiConsole.Confirm("Phone Number Is Correct?"))
     {
         AnsiConsole.MarkupLine("Ok Exited..:(");
         Environment.Exit(0);
@@ -62,13 +62,13 @@ if (whatsection == "Login")
     {
         try
         {
-            var code = AnsiConsole.Ask<string>("\n[green]Sended[/] code your number please [bold]insert [red]code[/][/]?");
+            var code = AnsiConsole.Ask<string>("\n[green]Code sent to your number[/] please [bold]enter the [red]code[/][/]?");
 
             var finalres = await divar.confirm(code);
 
             if (finalres != "Error")
             {
-                AnsiConsole.MarkupLine($"\n\nOperation [green]Successfully[/] saved your session in [purple]folder[/] : {SessionFolder}");
+                AnsiConsole.MarkupLine($"\n\nOperation [green]Successful[/]. your session is saved in this [purple]folder[/] : {SessionFolder}");
             }
             else
             {
@@ -91,13 +91,13 @@ else if (whatsection == "Collect Number")
         .Title(" Please select one of the [green]following[/]?")
         .HighlightStyle(Style.Plain.Foreground(Color.Red1))
         .PageSize(10)
-        .MoreChoicesText("[grey](Move up and down to reveal more following)[/]")
-        .AddChoices(new[] { "WithUrl", "WithCity", "WithCategory" }));
+        .MoreChoicesText("[grey](Move up and down to reveal more options)[/]")
+        .AddChoices(new[] { "By Url", "By City", "By Category" }));
 
 
     if (whatMethod == "WithUrl")
     {
-        AnsiConsole.Markup("\nPlease insert [red]URL[/] ? : ");
+        AnsiConsole.Markup("\nPlease enter [red]URL[/] ? : ");
         string? url = Console.ReadLine();
         if (Regex.IsMatch(url, "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()!@:%_\\+.~#?&\\/\\/=]*)"))
         {
@@ -117,7 +117,7 @@ else if (whatsection == "Collect Number")
                .MoreChoicesText("[grey](Move up and down to reveal more Session)[/]")
                .Required()
                .InstructionsText(
-                   "[grey](Press [blue]<space>[/] to toggle a Session, " +
+                   "[grey](Press [blue]<space>[/] to select a Session, " +
                    "[green]<enter>[/] to accept)[/]")
                .AddChoiceGroup("Select All", SessionName));
                 var dnc = new DivarNumberCollector()
@@ -168,7 +168,7 @@ else if (whatsection == "Collect Number")
         }
         else
         {
-            AnsiConsole.MarkupLine("\n\n   [red]Url [bold]Incorrect[/] ![/]");
+            AnsiConsole.MarkupLine("\n\n   [red]Url [bold]Invalid[/] ![/]");
         }
     }
     else
