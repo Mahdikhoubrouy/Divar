@@ -26,7 +26,7 @@ if (!Directory.Exists(SessionFolder)) Directory.CreateDirectory(SessionFolder);
 var whatsection = AnsiConsole.Prompt(
     new SelectionPrompt<string>()
         .HighlightStyle(Style.Plain.Foreground(Color.Red1))
-        .Title(" Please select one of the [green]following[/]?")
+        .Title(" Please select one of the [green]options[/]?")
         .PageSize(10)
         .MoreChoicesText("[grey](Move up and down to reveal more options)[/]")
         .AddChoices(new[] { "Add Session", "Collect Number", "Exit" }));
