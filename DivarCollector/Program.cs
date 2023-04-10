@@ -88,7 +88,7 @@ else if (whatsection == "Collect Number")
 {
     var whatMethod = AnsiConsole.Prompt(
     new SelectionPrompt<string>()
-        .Title(" Please select one of the [green]following[/]?")
+        .Title(" Please select one of the following [green]options[/]?")
         .HighlightStyle(Style.Plain.Foreground(Color.Red1))
         .PageSize(10)
         .MoreChoicesText("[grey](Move up and down to reveal more options)[/]")
@@ -97,7 +97,7 @@ else if (whatsection == "Collect Number")
 
     if (whatMethod == "WithUrl")
     {
-        AnsiConsole.Markup("\nPlease enter [red]URL[/] ? : ");
+        AnsiConsole.Markup("\nPlease enter the [red]URL[/] ? : ");
         string? url = Console.ReadLine();
         if (Regex.IsMatch(url, "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()!@:%_\\+.~#?&\\/\\/=]*)"))
         {
@@ -114,7 +114,7 @@ else if (whatsection == "Collect Number")
                .Title("[purple3]Which of the following sessions should the operation be performed with?[/]")
                .PageSize(10)
                .HighlightStyle(Style.Plain.Foreground(Color.Red1))
-               .MoreChoicesText("[grey](Move up and down to reveal more Session)[/]")
+               .MoreChoicesText("[grey](Move up and down to reveal more sessions)[/]")
                .Required()
                .InstructionsText(
                    "[grey](Press [blue]<space>[/] to select a Session, " +
@@ -168,12 +168,12 @@ else if (whatsection == "Collect Number")
         }
         else
         {
-            AnsiConsole.MarkupLine("\n\n   [red]Url [bold]Invalid[/] ![/]");
+            AnsiConsole.MarkupLine("\n\n   [red]URL [bold]Invalid[/] ![/]");
         }
     }
     else
     {
-        AnsiConsole.MarkupLine(" [italic][green]This section is not yet complete, coming soon...[/][/]");
+        AnsiConsole.MarkupLine(" [italic][green]This section is not complete yet, coming soon...[/][/]");
     }
 }
 else if (whatsection == "Exit")
